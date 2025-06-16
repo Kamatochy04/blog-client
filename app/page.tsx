@@ -1,95 +1,71 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="container mx-auto px-4 py-12">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-3/4">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-slate-800">
+              Latest Articles
+            </h2>
+            <select className="w-[180px] px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="recent">Most Recent</option>
+              <option value="popular">Most Popular</option>
+              <option value="trending">Trending</option>
+            </select>
+          </div>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[...Array(4)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-300"
+              >
+                <h3 className="text-xl font-semibold text-blue-600 line-clamp-2">
+                  A Journey Through Modern Web Development
+                </h3>
+                <p className="text-sm text-gray-500 mt-2">
+                  By John Doe • 5 min read • June 15, 2025
+                </p>
+                <p className="mt-4 text-gray-600 line-clamp-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua...
+                </p>
+                <button className="mt-4 px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 text-sm transition-colors">
+                  Read More
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Sidebar */}
+        <aside className="lg:w-1/4">
+          <div className="sticky top-24 bg-white rounded-lg p-6 shadow-sm border-t-4 border-gray-400">
+            <h3 className="text-xl font-semibold text-slate-800 mb-4">
+              Categories
+            </h3>
+            <div className="flex flex-col gap-2">
+              {[
+                "Technology",
+                "Lifestyle",
+                "Programming",
+                "Design",
+                "Business",
+              ].map((category) => (
+                <button
+                  key={category}
+                  className="text-left px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 text-sm transition-colors"
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }
